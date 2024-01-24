@@ -30,6 +30,7 @@ class ChaseViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .blue
         button.setTitle("Regenerate", for: .normal)
+        button.isEnabled = false
         return button
     }()
     
@@ -61,22 +62,31 @@ class ChaseViewController: UIViewController {
         self.setupUI()
         self.randomPosGhost = Int.random(in: 0..<self.cellCount)
         self.randomPosPolice = self.findPolice()
+        self.reGenButton.isEnabled = true
     }
     
     func findPolice() -> Int {
-        let ghostRow = self.randomPosGhost / 10
-        let ghostCol = self.randomPosGhost % 10
+        let ghostRow = self.randomPosGhost / (self.row ?? 0)
+        let ghostCol = self.randomPosGhost % (self.column ?? 0)
         
         
-        var random = stride(from: ghostRow * 10, through: ((ghostRow + 1) * 10 - 1), by: 1)
-        var random2 = stride(from: ghostCol, through: <#T##Strideable#>, by: <#T##Comparable & SignedNumeric#>)
+        var random = stride(from: ghostRow * (self.row ?? 0), through: ((ghostRow + 1) * (self.row ?? 0) - 1), by: 1).map { $0 }
+        var random2 = stride(from: ghostCol, through: ((self.column ?? 0) * (self.column ?? 0) + ghostCol), by: self.column ?? 0).map { $0 }
         
-        print(random)
-        print(random2)
-        let polRow =
-        let polCol = random % 10
+        random.append(contentsOf: random2)
         
-        return random
+        var total = stride(from: 0, through: self.cellCount, by: 1).map { $0 }
+        
+        total.removeAll { (char) in
+            if random.contains(char) {
+                return true
+            }
+            return false
+        }
+        
+        print(total)
+        
+        return total.randomElement() ?? 0
     }
     
     func setupUI() {
@@ -93,14 +103,17 @@ class ChaseViewController: UIViewController {
             
             self.reGenButton.widthAnchor.constraint(equalToConstant: 100),
             self.reGenButton.heightAnchor.constraint(equalToConstant: 50),
-            self.reGenButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.reGenButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -50),
             self.reGenButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
     }
     
     @objc func regen() {
+        self.reGenButton.isEnabled = false
         self.randomPosGhost = Int.random(in: 0..<self.cellCount)
         self.randomPosPolice = self.findPolice()
+        self.reGenButton.isEnabled = true
+        self.collectionView.reloadData()
     }
 }
 
