@@ -27,28 +27,19 @@ class ChaseViewController: UIViewController {
     
     private lazy var reGenButton: UIButton = {
         let button = UIButton(frame: CGRect.zero)
+        button.addTarget(self, action: #selector(regen), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .blue
+        button.tintColor = .white
         button.setTitle("Regenerate", for: .normal)
         button.isEnabled = false
         return button
     }()
     
-    var row: Int?
-    var column: Int?
+    private let viewModel: ChaseViewModel
     
-    var cellCount: Int {
-        ((self.row ?? 0) * (self.column ?? 0))
-    }
-    
-    let ghost = "👻"
-    let police = "👮🏼"
-    
-    var randomPosGhost: Int = 0
-    
-    var randomPosPolice: Int = 0
-    
-    init() {
+    init(viewModel: ChaseViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -60,40 +51,16 @@ class ChaseViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.setupUI()
-        self.randomPosGhost = Int.random(in: 0..<self.cellCount)
-        self.randomPosPolice = self.findPolice()
-        self.reGenButton.isEnabled = true
-    }
-    
-    func findPolice() -> Int {
-        let ghostRow = self.randomPosGhost / (self.row ?? 0)
-        let ghostCol = self.randomPosGhost % (self.column ?? 0)
-        
-        
-        var random = stride(from: ghostRow * (self.row ?? 0), through: ((ghostRow + 1) * (self.row ?? 0) - 1), by: 1).map { $0 }
-        var random2 = stride(from: ghostCol, through: ((self.column ?? 0) * (self.column ?? 0) + ghostCol), by: self.column ?? 0).map { $0 }
-        
-        random.append(contentsOf: random2)
-        
-        var total = stride(from: 0, through: self.cellCount, by: 1).map { $0 }
-        
-        total.removeAll { (char) in
-            if random.contains(char) {
-                return true
-            }
-            return false
-        }
-        
-        print(total)
-        
-        return total.randomElement() ?? 0
+        self.viewModel.findGhostPosition()
+        self.viewModel.findPolicePosition()
     }
     
     func setupUI() {
+        self.title = "Let's Chase"
         self.view.addSubview(self.collectionView)
         self.view.addSubview(self.reGenButton)
         
-        self.reGenButton.addTarget(self, action: #selector(regen), for: .touchUpInside)
+        self.reGenButton.isEnabled = true
         
         NSLayoutConstraint.activate([
             self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -110,17 +77,24 @@ class ChaseViewController: UIViewController {
     
     @objc func regen() {
         self.reGenButton.isEnabled = false
-        self.randomPosGhost = Int.random(in: 0..<self.cellCount)
-        self.randomPosPolice = self.findPolice()
-        self.reGenButton.isEnabled = true
-        self.collectionView.reloadData()
+        self.reGenButton.backgroundColor = .gray
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            guard let self = self else { return }
+            
+            self.viewModel.findGhostPosition()
+            self.viewModel.findPolicePosition()
+            self.reGenButton.isEnabled = true
+            self.reGenButton.backgroundColor = .blue
+            self.collectionView.reloadData()
+        }
     }
 }
 
 extension ChaseViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.cellCount
+        return self.viewModel.cellCount
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -135,20 +109,20 @@ extension ChaseViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
         var showText: String
         
-        if indexPath.row == self.randomPosGhost {
-            showText = ghost
-        } else if indexPath.row == randomPosPolice {
-            showText = police
+        if indexPath.row == self.viewModel.randomPosGhost {
+            showText = ChaseViewModel.ghost
+        } else if indexPath.row == self.viewModel.randomPosPolice {
+            showText = ChaseViewModel.police
         } else {
             showText = ""
         }
         
-        cell.setupCell(showText, color: .red)
+        cell.setupCell(showText)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let side = (self.view.window?.windowScene?.windows.first?.bounds.width ?? 0) / (CGFloat((self.column ?? 0)) * 1.0) - 2
+        let side = (self.view.window?.windowScene?.windows.first?.bounds.width ?? 0) / (CGFloat(self.viewModel.column) * 1.0) - 2
         return CGSize(width: side, height: side)
     }
 }
