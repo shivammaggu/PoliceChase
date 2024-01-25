@@ -8,7 +8,7 @@
 import UIKit
 
 class InputViewController: UIViewController {
-
+    
     @IBOutlet weak var rowsField: UITextField!
     @IBOutlet weak var columnsField: UITextField!
     @IBOutlet weak var generateButton: UIButton!
@@ -33,7 +33,7 @@ class InputViewController: UIViewController {
     func validate(_ row: Int, _ col: Int) -> Bool {
         return row >= 2 && row <= 20 && col >= 2 && col <= 20
     }
-
+    
     @IBAction func generate(_ sender: Any) {
         let row = self.getIntValue(self.rowsField.text ?? "")
         let col = self.getIntValue(self.columnsField.text ?? "")

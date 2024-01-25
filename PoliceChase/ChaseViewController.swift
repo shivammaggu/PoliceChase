@@ -79,14 +79,19 @@ class ChaseViewController: UIViewController {
         self.reGenButton.isEnabled = false
         self.reGenButton.backgroundColor = .gray
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+        self.viewModel.findGhostPosition()
+        self.viewModel.findPolicePosition()
+        
+        UIView.transition(with: self.collectionView,
+                          duration: 0.5,
+                          options: .transitionCrossDissolve) {
+            self.collectionView.reloadData()
+        } completion: { [weak self] _ in
+            
             guard let self = self else { return }
             
-            self.viewModel.findGhostPosition()
-            self.viewModel.findPolicePosition()
             self.reGenButton.isEnabled = true
             self.reGenButton.backgroundColor = .blue
-            self.collectionView.reloadData()
         }
     }
 }
