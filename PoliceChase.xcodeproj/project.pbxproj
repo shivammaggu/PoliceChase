@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		4097FBB12B614030002FC779 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4097FBB02B614030002FC779 /* AppDelegate.swift */; };
 		4097FBB32B614030002FC779 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4097FBB22B614030002FC779 /* SceneDelegate.swift */; };
-		4097FBB52B614030002FC779 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4097FBB42B614030002FC779 /* ViewController.swift */; };
+		4097FBB52B614030002FC779 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4097FBB42B614030002FC779 /* InputViewController.swift */; };
 		4097FBB82B614030002FC779 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4097FBB62B614030002FC779 /* Main.storyboard */; };
 		4097FBBA2B614032002FC779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4097FBB92B614032002FC779 /* Assets.xcassets */; };
 		4097FBBD2B614032002FC779 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4097FBBB2B614032002FC779 /* LaunchScreen.storyboard */; };
@@ -18,6 +18,7 @@
 		4097FBD42B614032002FC779 /* PoliceChaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4097FBD32B614032002FC779 /* PoliceChaseUITestsLaunchTests.swift */; };
 		4097FBE12B614394002FC779 /* ChaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4097FBE02B614394002FC779 /* ChaseViewController.swift */; };
 		4097FBE32B6144D9002FC779 /* ChaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4097FBE22B6144D9002FC779 /* ChaseTableViewCell.swift */; };
+		4097FBE52B6223E1002FC779 /* ChaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4097FBE42B6223E1002FC779 /* ChaseViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +42,7 @@
 		4097FBAD2B614030002FC779 /* PoliceChase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoliceChase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4097FBB02B614030002FC779 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4097FBB22B614030002FC779 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4097FBB42B614030002FC779 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4097FBB42B614030002FC779 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		4097FBB72B614030002FC779 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4097FBB92B614032002FC779 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4097FBBC2B614032002FC779 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,6 +54,7 @@
 		4097FBD32B614032002FC779 /* PoliceChaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliceChaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4097FBE02B614394002FC779 /* ChaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseViewController.swift; sourceTree = "<group>"; };
 		4097FBE22B6144D9002FC779 /* ChaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseTableViewCell.swift; sourceTree = "<group>"; };
+		4097FBE42B6223E1002FC779 /* ChaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,14 +105,15 @@
 		4097FBAF2B614030002FC779 /* PoliceChase */ = {
 			isa = PBXGroup;
 			children = (
+				4097FBB62B614030002FC779 /* Main.storyboard */,
+				4097FBBB2B614032002FC779 /* LaunchScreen.storyboard */,
+				4097FBB92B614032002FC779 /* Assets.xcassets */,
+				4097FBBE2B614032002FC779 /* Info.plist */,
 				4097FBB02B614030002FC779 /* AppDelegate.swift */,
 				4097FBB22B614030002FC779 /* SceneDelegate.swift */,
-				4097FBB42B614030002FC779 /* ViewController.swift */,
-				4097FBB62B614030002FC779 /* Main.storyboard */,
-				4097FBB92B614032002FC779 /* Assets.xcassets */,
-				4097FBBB2B614032002FC779 /* LaunchScreen.storyboard */,
-				4097FBBE2B614032002FC779 /* Info.plist */,
+				4097FBB42B614030002FC779 /* InputViewController.swift */,
 				4097FBE02B614394002FC779 /* ChaseViewController.swift */,
+				4097FBE42B6223E1002FC779 /* ChaseViewModel.swift */,
 				4097FBE22B6144D9002FC779 /* ChaseTableViewCell.swift */,
 			);
 			path = PoliceChase;
@@ -264,9 +267,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4097FBB52B614030002FC779 /* ViewController.swift in Sources */,
+				4097FBB52B614030002FC779 /* InputViewController.swift in Sources */,
 				4097FBB12B614030002FC779 /* AppDelegate.swift in Sources */,
 				4097FBE32B6144D9002FC779 /* ChaseTableViewCell.swift in Sources */,
+				4097FBE52B6223E1002FC779 /* ChaseViewModel.swift in Sources */,
 				4097FBB32B614030002FC779 /* SceneDelegate.swift in Sources */,
 				4097FBE12B614394002FC779 /* ChaseViewController.swift in Sources */,
 			);

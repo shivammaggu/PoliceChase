@@ -17,7 +17,6 @@ class ChaseTableViewCell: UICollectionViewCell {
         label.textAlignment = .center
         label.numberOfLines = 1
         label.lineBreakMode = .byTruncatingTail
-        label.textColor = .black
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
@@ -33,17 +32,17 @@ class ChaseTableViewCell: UICollectionViewCell {
     
     private func setupUI() {
         self.addSubview(exLabel)
+        self.backgroundColor = .gray
         
         NSLayoutConstraint.activate([
             self.exLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.exLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            self.exLabel.widthAnchor.constraint(equalToConstant: 20),
-            self.exLabel.heightAnchor.constraint(equalToConstant: 20)
+            self.exLabel.widthAnchor.constraint(equalToConstant: 25),
+            self.exLabel.heightAnchor.constraint(equalToConstant: 25)
         ])
     }
     
-    func setupCell(_ text: String, color: UIColor) {
+    func setupCell(_ text: String) {
         self.exLabel.text = text
-        self.backgroundColor = color
     }
 }

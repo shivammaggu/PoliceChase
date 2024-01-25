@@ -8,53 +8,61 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Input View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PoliceChase" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="InputViewController" customModule="PoliceChase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jTi-Q9-Qs5">
-                                <rect key="frame" x="16" y="119" width="361" height="88"/>
+                                <rect key="frame" x="16" y="103" width="361" height="88"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kP3-9k-2Yp">
-                                        <rect key="frame" x="130" y="0.0" width="101.33333333333331" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ryy-EZ-dNK">
-                                                <rect key="frame" x="0.0" y="0.0" width="40.666666666666664" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="170.66666666666666" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8YR-8r-dZ6">
-                                                <rect key="frame" x="60.666666666666657" y="0.0" width="40.666666666666657" height="34"/>
+                                                <rect key="frame" x="190.66666666666663" y="0.0" width="170.33333333333337" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Xvy-0t-1b2">
-                                        <rect key="frame" x="103.33333333333333" y="54" width="154.66666666666669" height="34"/>
+                                        <rect key="frame" x="0.0" y="54" width="361" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Columns" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPA-b9-kcJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="67.333333333333329" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="170.66666666666666" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EEg-zh-8I5">
-                                                <rect key="frame" x="87.333333333333343" y="0.0" width="67.333333333333343" height="34"/>
+                                                <rect key="frame" x="190.66666666666663" y="0.0" width="170.33333333333337" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Xvy-0t-1b2" secondAttribute="trailing" id="4e1-Zg-wNZ"/>
+                                    <constraint firstItem="kP3-9k-2Yp" firstAttribute="leading" secondItem="jTi-Q9-Qs5" secondAttribute="leading" id="8EV-p6-aJf"/>
+                                    <constraint firstAttribute="bottom" secondItem="Xvy-0t-1b2" secondAttribute="bottom" id="QUe-iT-rfL"/>
+                                    <constraint firstAttribute="trailing" secondItem="kP3-9k-2Yp" secondAttribute="trailing" id="fPl-uj-jkY"/>
+                                    <constraint firstItem="kP3-9k-2Yp" firstAttribute="top" secondItem="jTi-Q9-Qs5" secondAttribute="top" id="jYC-qm-h6D"/>
+                                    <constraint firstItem="Xvy-0t-1b2" firstAttribute="leading" secondItem="jTi-Q9-Qs5" secondAttribute="leading" id="qRL-Ri-Src"/>
+                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSi-vT-1B9">
-                                <rect key="frame" x="146.66666666666666" y="257" width="100" height="50"/>
+                                <rect key="frame" x="146.66666666666666" y="241" width="100" height="50"/>
                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="DVp-lj-pbP"/>
@@ -74,7 +82,7 @@
                             <constraint firstItem="jTi-Q9-Qs5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="UZw-u7-uki"/>
                             <constraint firstItem="CSi-vT-1B9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="a2c-bW-JcD"/>
                             <constraint firstItem="CSi-vT-1B9" firstAttribute="top" secondItem="jTi-Q9-Qs5" secondAttribute="bottom" constant="50" id="bVR-hJ-4N9"/>
-                            <constraint firstItem="jTi-Q9-Qs5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="lvf-y9-HaK"/>
+                            <constraint firstItem="jTi-Q9-Qs5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lvf-y9-HaK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ule-Av-WsM"/>
@@ -87,22 +95,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="608.39694656488552" y="-320.42253521126764"/>
-        </scene>
-        <!--Chase View Controller-->
-        <scene sceneID="xMs-me-Kbl">
-            <objects>
-                <viewController storyboardIdentifier="ChaseViewController" id="v16-Ca-d8P" customClass="ChaseViewController" customModule="PoliceChase" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="b01-ML-bI2">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="ecf-BK-HSv"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="5mU-gJ-g3K"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7xs-RZ-sYg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1446.5648854961833" y="-338.02816901408454"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="W9N-3k-MpJ">
@@ -129,9 +121,6 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
